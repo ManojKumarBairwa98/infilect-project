@@ -5,7 +5,7 @@ from rest_framework import routers
 
 
 urlpatterns = [
-    path("chees",Views.get_user_profile, name="chees"),
+    path(r"chees/<str:slugName>",Views.get_chees_moves, name="chees"),
 
-
+# r'^blog/(?P<slug>[-\w]+)/$'
 ]

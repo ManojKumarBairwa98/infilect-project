@@ -5,24 +5,19 @@ from typing import Any
 from django.http import HttpRequest, JsonResponse
 from django.views import View
 from django.utils.decorators import classonlymethod
+import json
 
 from rest_framework.decorators import api_view
-
+from chessProject.chess.chessRepo import chessRepo
 
 # class Views():
     
-@api_view(["GET"])
+@api_view(["POST"])
 
-def get_user_profile(request):
-    # session_id = None
-    # user_id = None
-    # try:
-    #     user_id = request.session['user_id']
-    #     session_id = request.session['session_id']
-    # except KeyError:
-    #    pass
-    # if user_id is None:
-    response = {"status": "failure", "message": "user_id does not exist for this session id, invalid session id"}
+def get_chees_moves(request,slugName: str):
+    payload = json.loads(request.body)
+    response = chessRepo().set_working(payload,slugName)
+    
     return JsonResponse(response)
 
         
