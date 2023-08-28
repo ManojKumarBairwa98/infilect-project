@@ -9,7 +9,7 @@ class chessRepo:
     def board_key(self, xx, yy):
         return str(self.chess_board_mapping.get(yy+1))+str(xx+1)
 
-    def knigth_moves(self,x,y):
+    def knight_moves(self,x,y):
         dx = [-2, -1, 1, 2, -2, -1, 1, 2]
         dy = [-1, -2, -2, -1, 1, 2, 2, 1]
         n=self.n
@@ -174,7 +174,7 @@ class chessRepo:
 
     def get_piece_function(self, piece_name, x,y):
         if piece_name.lower() == 'knight':
-            moves_res = self.knigth_moves(x,y)
+            moves_res = self.knight_moves(x,y)
         
         elif piece_name.lower() == 'queen':
             moves_res = self.queen_moves(x,y)

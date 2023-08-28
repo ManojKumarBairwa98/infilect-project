@@ -1,6 +1,6 @@
-FROM python:3.10   
+FROM python:3.8-slim-buster
 
-EXPOSE 8000
+EXPOSE 81
 
 COPY requirements.txt .
 
@@ -10,4 +10,4 @@ RUN --mount=type=cache,target=/root/.cache/pip  python -m pip install -r require
 
 COPY . .
 
-CMD ["python", "manage.py", "runserver"]
+CMD ["gunicorn", "infilectProject.wsgi:application", "--workers", "5", "--timeout", "360", "-b"  ,"0.0.0.0:81"]
